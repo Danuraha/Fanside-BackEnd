@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+//import org.ticketreservation.moviefan.Security.JwtTokenProvider;
 
 @Configuration
 @EnableWebSecurity
@@ -25,9 +26,16 @@ public class SecurityConfig {
         //database connectivity
         provider.setUserDetailsService(userDetailsService);
         provider.setPasswordEncoder(new BCryptPasswordEncoder(12)); //1st line
-        provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance()); // if u need to uncomment the 1st line then dlt it
+//        provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance()); // if u need to uncomment the 1st line then dlt it
         return provider;
     }
+
+//    @Bean
+//    public JwtTokenProvider jwtTokenProvider() {
+//        return new JwtTokenProvider();
+//    }
+
+
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -49,7 +57,12 @@ public class SecurityConfig {
 
         http
                 .csrf(customizer->customizer.disable())
-                .authorizeHttpRequests(requst ->requst.anyRequest().authenticated())
+                .authorizeHttpRequests(authorize ->{
+
+                    authorize.requestMatchers("/register").permitAll()
+//                            .requestMatchers("/loginU").permitAll()
+                            .anyRequest().authenticated();
+                })
 //              .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session ->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)); //make it stateless session

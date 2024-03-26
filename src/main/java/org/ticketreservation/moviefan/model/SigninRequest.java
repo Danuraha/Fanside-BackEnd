@@ -1,14 +1,15 @@
 package org.ticketreservation.moviefan.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
+@Builder
 @NoArgsConstructor
-public class Student {
-    private int id;
-    private String name;
-    private String tech;
+@AllArgsConstructor
+public class SigninRequest {
+    private String email;
+    private String password;
 }

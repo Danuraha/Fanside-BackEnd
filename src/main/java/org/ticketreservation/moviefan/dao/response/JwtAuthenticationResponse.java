@@ -1,4 +1,4 @@
-package org.ticketreservation.moviefan.model;
+package org.ticketreservation.moviefan.dao.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

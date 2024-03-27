@@ -1,4 +1,4 @@
-package org.ticketreservation.moviefan.dao;
+package org.ticketreservation.moviefan.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.ticketreservation.moviefan.entities.Role;
 
 
 import java.util.Collection;

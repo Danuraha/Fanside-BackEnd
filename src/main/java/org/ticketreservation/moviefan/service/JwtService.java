@@ -1,4 +1,4 @@
-package org.ticketreservation.moviefan.Security;
+package org.ticketreservation.moviefan.service;
 
 import org.springframework.security.core.userdetails.UserDetails;
 

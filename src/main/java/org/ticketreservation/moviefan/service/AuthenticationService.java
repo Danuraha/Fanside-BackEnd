@@ -1,8 +1,8 @@
 package org.ticketreservation.moviefan.service;
 
-import org.ticketreservation.moviefan.model.JwtAuthenticationResponse;
-import org.ticketreservation.moviefan.model.SignUpRequest;
-import org.ticketreservation.moviefan.model.SigninRequest;
+import org.ticketreservation.moviefan.dao.response.JwtAuthenticationResponse;
+import org.ticketreservation.moviefan.dao.request.SignUpRequest;
+import org.ticketreservation.moviefan.dao.request.SigninRequest;
 
 public interface AuthenticationService {
     JwtAuthenticationResponse signup(SignUpRequest request);

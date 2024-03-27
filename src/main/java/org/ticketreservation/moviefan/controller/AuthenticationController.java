@@ -3,9 +3,9 @@ package org.ticketreservation.moviefan.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.ticketreservation.moviefan.model.JwtAuthenticationResponse;
-import org.ticketreservation.moviefan.model.SignUpRequest;
-import org.ticketreservation.moviefan.model.SigninRequest;
+import org.ticketreservation.moviefan.dao.response.JwtAuthenticationResponse;
+import org.ticketreservation.moviefan.dao.request.SignUpRequest;
+import org.ticketreservation.moviefan.dao.request.SigninRequest;
 import org.ticketreservation.moviefan.service.AuthenticationService;
 
 @RestController

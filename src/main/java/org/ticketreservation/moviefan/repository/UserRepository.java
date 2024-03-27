@@ -1,6 +1,7 @@
-package org.ticketreservation.moviefan.dao;
+package org.ticketreservation.moviefan.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.ticketreservation.moviefan.entities.User;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package org.ticketreservation.moviefan.service;
+package org.ticketreservation.moviefan.service.impl;
 
 
 import lombok.RequiredArgsConstructor;
@@ -6,14 +6,14 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.ticketreservation.moviefan.Security.JwtService;
-import org.ticketreservation.moviefan.dao.Role;
+import org.ticketreservation.moviefan.service.JwtService;
+import org.ticketreservation.moviefan.entities.Role;
+import org.ticketreservation.moviefan.entities.User;
+import org.ticketreservation.moviefan.repository.UserRepository;
+import org.ticketreservation.moviefan.dao.response.JwtAuthenticationResponse;
+import org.ticketreservation.moviefan.dao.request.SignUpRequest;
+import org.ticketreservation.moviefan.dao.request.SigninRequest;
 import org.ticketreservation.moviefan.service.AuthenticationService;
-import org.ticketreservation.moviefan.dao.User;
-import org.ticketreservation.moviefan.dao.UserRepository;
-import org.ticketreservation.moviefan.model.JwtAuthenticationResponse;
-import org.ticketreservation.moviefan.model.SignUpRequest;
-import org.ticketreservation.moviefan.model.SigninRequest;
 
 @Service
 @RequiredArgsConstructor

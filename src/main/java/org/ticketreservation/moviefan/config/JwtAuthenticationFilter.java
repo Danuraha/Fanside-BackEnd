@@ -14,7 +14,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
-import org.ticketreservation.moviefan.Security.JwtService;
+import org.ticketreservation.moviefan.service.JwtService;
 import org.ticketreservation.moviefan.service.UserService;
 
 import java.io.IOException;

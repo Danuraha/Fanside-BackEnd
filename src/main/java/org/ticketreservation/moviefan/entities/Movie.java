@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -27,4 +26,6 @@ public class Movie {
 @JsonIgnore
     @ManyToMany(mappedBy = "assignedMovie")
     private Set<Cinema> cinemaSet=new HashSet<>();
+//    @OneToMany(mappedBy = "movie")
+//    private Set<Showtime> showtimes;
 }

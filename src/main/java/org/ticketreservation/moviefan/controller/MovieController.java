@@ -10,6 +10,7 @@ import org.ticketreservation.moviefan.service.MovieService;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/v1/movie")
 public class MovieController {
     @Autowired

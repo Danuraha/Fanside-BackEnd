@@ -17,6 +17,7 @@ public class Cinema {
     private String name;
     private String location;
     private int numSeats;
+    private String description;
 
     // Setters and getters omitted for brevity
 
@@ -25,4 +26,6 @@ public class Cinema {
             joinColumns = @JoinColumn(name = "cinema_id"),
             inverseJoinColumns = @JoinColumn(name = "movie_id"))
     private Set<Movie> assignedMovie=new HashSet<>();
+//    @OneToMany(mappedBy = "cinema")
+//    private Set<Showtime> showtimes;
 }

@@ -1,5 +1,6 @@
 package org.ticketreservation.moviefan.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,13 +20,15 @@ public class Cinema {
     private int numSeats;
     private String description;
 
-    // Setters and getters omitted for brevity
 
-    @ManyToMany
-    @JoinTable(name = "movie_cinema",
-            joinColumns = @JoinColumn(name = "cinema_id"),
-            inverseJoinColumns = @JoinColumn(name = "movie_id"))
-    private Set<Movie> assignedMovie=new HashSet<>();
-//    @OneToMany(mappedBy = "cinema")
-//    private Set<Showtime> showtimes;
+
+//    @ManyToMany
+//    @JoinTable(name = "movie_cinema",
+//            joinColumns = @JoinColumn(name = "cinema_id"),
+//            inverseJoinColumns = @JoinColumn(name = "movie_id"))
+//    private Set<Movie> assignedMovie=new HashSet<>();
+    @OneToMany(mappedBy = "cinema")
+    @JsonIgnore // This prevents infinite recursion
+    private Set<Showtime> showtimes;
+
 }

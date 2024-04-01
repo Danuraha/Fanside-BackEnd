@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.ticketreservation.moviefan.entities.Showtime;
 import org.ticketreservation.moviefan.repository.ShowtimeRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,4 +27,17 @@ public class ShowtimeService {
     }
 
     // You can add additional methods for filtering or searching showtimes
+
+
+    public Optional<List<Showtime>> getByMovie(Long movieId) {
+//        System.out.println();
+//        return showtimeRepository.findByMovieMovieId(movieId);
+return showtimeRepository.findByMovieId(movieId);
+
+
+    }
+    public Optional<List<Showtime>> getByCinema(Long cinemaId){
+        return showtimeRepository.findByCinemaCinemaId(cinemaId);
+
+    }
 }

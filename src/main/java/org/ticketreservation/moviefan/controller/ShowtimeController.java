@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.ticketreservation.moviefan.entities.Showtime;
 import org.ticketreservation.moviefan.service.ShowtimeService;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -40,6 +41,14 @@ public class ShowtimeController {
         }
     }
 
+    @GetMapping("/getbymovieId/{movieId}")
+    public Optional<List<Showtime>> getByMovieId(@PathVariable Long movieId) {
+        return showtimeService.getByMovie(movieId);
+    }
+    @GetMapping("/getbycinemaId/{cinemaId}")
+    public Optional<List<Showtime>> getByCinemaId(@PathVariable Long cinemaId){
+        return showtimeService.getByCinema(cinemaId);
+    }
     // You can add additional methods for listing or filtering showtimes
 }
 

@@ -23,9 +23,9 @@ public class Movie {
     private String genre;
 
     // Setters and getters omitted for brevity
-@JsonIgnore
-    @ManyToMany(mappedBy = "assignedMovie")
-    private Set<Cinema> cinemaSet=new HashSet<>();
+//@JsonIgnore
+//    @ManyToMany(mappedBy = "assignedMovie")
+//    private Set<Cinema> cinemaSet=new HashSet<>();
 //    @OneToMany(mappedBy = "movie")
 //    private Set<Showtime> showtimes;
 }

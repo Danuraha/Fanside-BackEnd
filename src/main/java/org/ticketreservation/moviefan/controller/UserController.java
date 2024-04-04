@@ -3,6 +3,7 @@ package org.ticketreservation.moviefan.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.ticketreservation.moviefan.dao.userDetails.UserDetailsdto;
 import org.ticketreservation.moviefan.entities.User;
 import org.ticketreservation.moviefan.service.UserDetailsService;
 
@@ -15,9 +16,9 @@ import java.util.Optional;
 public class UserController {
 
     private final UserDetailsService userDetailsService;
-    @GetMapping("/{id}")
-    public ResponseEntity<Optional<User>> getByUser(@PathVariable Long id) {
-        Optional<User> user = userDetailsService.getByUser(id);
+    @GetMapping("/{email}")
+    public ResponseEntity<Optional<User>> getByUser(@PathVariable String email) {
+        Optional<User> user = userDetailsService.getByUser(email);
         if (user.isPresent()) {
             return ResponseEntity.ok(user);
         } else {
@@ -26,8 +27,8 @@ public class UserController {
     }
 
     @PutMapping("/save")
-    public ResponseEntity<User> updateDetails(@RequestBody User user) {
-        Optional<User> updatedUser = userDetailsService.updateDetails(user);
+    public ResponseEntity<User> updateDetails(@RequestBody UserDetailsdto userDetailsdto) {
+        Optional<User> updatedUser = userDetailsService.updateDetails(userDetailsdto);
 
         if (updatedUser.isPresent()) {
             return ResponseEntity.ok(updatedUser.get());

@@ -30,7 +30,7 @@ public class BookingController {
 //    }
 
     @PostMapping("/save")
-    public ResponseEntity<Booking> saveBooking(@RequestBody Bookingdto bookingdto){
+    public ResponseEntity<Booking> saveBooking(@RequestBody Bookingdto bookingdto) throws Exception {
         bookingService.saveBooking(bookingdto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

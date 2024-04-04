@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface BookingService {
 
-    void saveBooking(Bookingdto bookingdto);
+    void saveBooking(Bookingdto bookingdto) throws Exception;
 
     Optional<Booking> getBookingById(Long bookingId);
 

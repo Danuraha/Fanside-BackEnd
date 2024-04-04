@@ -11,7 +11,9 @@ import org.ticketreservation.moviefan.service.BookingService;
 import org.ticketreservation.moviefan.service.ShowtimeService;
 import org.ticketreservation.moviefan.service.UserDetailsService;
 
+import java.util.List;
 import java.util.Optional;
+
 @RequiredArgsConstructor
 @Service
 public class BookingServiceImpl implements BookingService {
@@ -19,31 +21,46 @@ public class BookingServiceImpl implements BookingService {
     private final BookingRepository bookingRepository;
 
 
-    private  final UserDetailsService userDetailsService;
+    private final UserDetailsService userDetailsService;
 
 
     private final ShowtimeService showtimeService;
 
-    public void saveBooking(Bookingdto bookingdto){
-        Booking booking = new Booking(); // Assuming Booking is your entity class
+    public void saveBooking(Bookingdto bookingdto) throws Exception {
+        List<Booking> bookedList = getByShowId(bookingdto.getShowId());
+        boolean isSeatBooked = bookedList.stream()
+                .anyMatch(check -> check.getSeatId().equals(bookingdto.getSeatId()));
 
-        Optional<User> userOptional = userDetailsService.getByUser(bookingdto.getUserId());
-        if (userOptional.isPresent()) {
-            User user = userOptional.get();
-            booking.setUser(user);
+        if (isSeatBooked) {
+            throw new Exception("Seat already Booked");
+            // Seat is already booked
         } else {
-            throw new RuntimeException("User details not found for ID: " + bookingdto.getUserId());
+            // Seat is available for booking
+            Booking booking = new Booking(); // Assuming Booking is your entity class
+
+            Optional<User> userOptional = userDetailsService.getByUser(bookingdto.getEmail()
+            );
+            if (userOptional.isPresent()) {
+                User user = userOptional.get();
+                booking.setUser(user);
+            } else {
+                throw new RuntimeException("User details not found for ID: " + bookingdto.getEmail());
+            }
+
+            Optional<Showtime> showtimeOptional = showtimeService.getShowtimeById(bookingdto.getShowId());
+            if (showtimeOptional.isPresent()) {
+                Showtime showtime = showtimeOptional.get();
+                booking.setShowtime(showtime);
+            } else {
+                throw new RuntimeException("Showtime details not found for ID: " + bookingdto.getShowId());
+            }
+
+
+            booking.setSeatId(bookingdto.getSeatId());
+            bookingRepository.save(booking);
         }
 
-        Optional<Showtime> showtimeOptional = showtimeService.getShowtimeById(bookingdto.getShowId());
-        if (showtimeOptional.isPresent()) {
-            Showtime showtime = showtimeOptional.get();
-            booking.setShowtime(showtime);
-        } else {
-            throw new RuntimeException("Showtime details not found for ID: " + bookingdto.getShowId());
-        }
-        booking.setSeatId(bookingdto.getSeatId());
-        bookingRepository.save(booking);
+
     }
 
 
@@ -51,4 +68,14 @@ public class BookingServiceImpl implements BookingService {
 
         return bookingRepository.findByBookingId(bookingId);
     }
+
+    public List<Booking> getByShowId(Long showId) {
+
+        return bookingRepository.findByShowtimeShowtimeId(showId);
+    }
+
+//    public boolean isBooked(Bookingdto bookingdto){
+//        List<Booking> bookedList=getByShowId(bookingdto.getShowId());
+//        bookedList.forEach(check -> check.getSeatId()==bookingdto.getSeatId());
+//    }
 }

@@ -2,7 +2,6 @@ package org.ticketreservation.moviefan.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.ticketreservation.moviefan.entities.Cinema;
 
 import java.util.List;

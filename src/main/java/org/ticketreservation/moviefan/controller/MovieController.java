@@ -1,6 +1,6 @@
 package org.ticketreservation.moviefan.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,13 +8,13 @@ import org.ticketreservation.moviefan.entities.Movie;
 import org.ticketreservation.moviefan.service.MovieService;
 
 import java.util.List;
-
+@RequiredArgsConstructor
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/v1/movie")
 public class MovieController {
-    @Autowired
-    private MovieService movieService;
+
+    private final MovieService movieService;
 
     @PostMapping("/save")
     public ResponseEntity createMovie(@RequestBody Movie movObj){

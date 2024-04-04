@@ -24,13 +24,17 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true)
-    private Integer id;
+    private Long id;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
+    private String phoneNumber;
+    private String address;
+    private String gender;
     @Enumerated(EnumType.STRING)
     private Role role;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
@@ -38,7 +42,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        // email in our case
+
         return email;
     }
 

@@ -6,13 +6,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.ticketreservation.moviefan.dao.booking.Bookingdto;
 import org.ticketreservation.moviefan.entities.Booking;
+import org.ticketreservation.moviefan.entities.Showtime;
 import org.ticketreservation.moviefan.service.BookingService;
 
 
+import java.util.List;
 import java.util.Optional;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/booking")
+@CrossOrigin(origins = "http://localhost:3000")
+
 public class BookingController {
 
     private final BookingService bookingService;
@@ -43,4 +47,6 @@ public class BookingController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
 }

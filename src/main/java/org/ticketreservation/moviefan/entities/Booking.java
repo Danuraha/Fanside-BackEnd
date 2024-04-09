@@ -1,11 +1,10 @@
 package org.ticketreservation.moviefan.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -18,16 +17,22 @@ public class Booking {
     private Long bookingId;
 //    private List<String> seatId;
 //@ElementCollection
-private List<String> seatId;
+//private List<String> seatId;
     @ManyToOne
     @JoinColumn(name = "showtime_id")
     private Showtime showtime;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "booking",cascade = CascadeType.ALL)
+    private List<SeatReservation> seatReservations;
 
 
 
     @ManyToOne
     @JoinColumn(name = "user_userid")
     private User user;
+
+    private Long totalAmount;
 
 
 }

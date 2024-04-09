@@ -1,17 +1,15 @@
 package org.ticketreservation.moviefan.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.ticketreservation.moviefan.dao.booking.Bookingdto;
 import org.ticketreservation.moviefan.entities.Booking;
-import org.ticketreservation.moviefan.entities.Showtime;
 import org.ticketreservation.moviefan.service.BookingService;
 
 
-import java.util.List;
 import java.util.Optional;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/booking")
@@ -34,9 +32,9 @@ public class BookingController {
 //    }
 
     @PostMapping("/save")
-    public ResponseEntity<Booking> saveBooking(@RequestBody Bookingdto bookingdto) throws Exception {
-        bookingService.saveBooking(bookingdto);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public Long saveBooking(@RequestBody Bookingdto bookingdto) throws Exception {
+       return bookingService.saveBooking(bookingdto);
+//        return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping("/{bookingId}")
     public ResponseEntity<Optional<Booking>> getBookingById(@PathVariable Long bookingId) {
@@ -47,6 +45,12 @@ public class BookingController {
             return ResponseEntity.notFound().build();
         }
     }
+
+//
+//@GetMapping("/{showId}")
+//public List<Long> getByShowId(@PathVariable Long showId){
+//    return bookingService.getByShowId(showId);
+//}
 
 
 }

@@ -15,4 +15,5 @@ public class Bookingdto {
     private String email;
     private List<String> seatId;
     private Long showId;
+    private Long totalAmount;
 }

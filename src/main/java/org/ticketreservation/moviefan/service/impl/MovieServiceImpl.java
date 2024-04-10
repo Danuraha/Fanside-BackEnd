@@ -12,7 +12,6 @@ import java.util.List;
 public class MovieServiceImpl implements MovieService {
 
     private final MovieRepository movieRepository;
-
     public void saveMovie(Movie movObj){
         movieRepository.save(movObj);
     }
@@ -25,7 +24,6 @@ public class MovieServiceImpl implements MovieService {
             return movieRepository.findAll();
         }
     }
-
     public void deleteMovie(Long movieId){
         movieRepository.deleteById(movieId);
     }

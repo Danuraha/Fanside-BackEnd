@@ -3,9 +3,9 @@ package org.ticketreservation.moviefan.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.ticketreservation.moviefan.dao.request.SignInRequest;
 import org.ticketreservation.moviefan.dao.response.JwtAuthenticationResponse;
 import org.ticketreservation.moviefan.dao.request.SignUpRequest;
-import org.ticketreservation.moviefan.dao.request.SigninRequest;
 import org.ticketreservation.moviefan.service.AuthenticationService;
 
 @RestController
@@ -20,7 +20,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/signin")
-    public ResponseEntity<JwtAuthenticationResponse> signin(@RequestBody SigninRequest request) {
+    public ResponseEntity<JwtAuthenticationResponse> signin(@RequestBody SignInRequest request) {
         return ResponseEntity.ok(authenticationService.signin(request));
     }
 }

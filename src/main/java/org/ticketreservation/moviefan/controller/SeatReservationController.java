@@ -2,8 +2,6 @@ package org.ticketreservation.moviefan.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import org.ticketreservation.moviefan.entities.Cinema;
-import org.ticketreservation.moviefan.entities.SeatReservation;
 import org.ticketreservation.moviefan.service.SeatReservationService;
 
 import java.util.List;
@@ -15,28 +13,18 @@ import java.util.Map;
 @RequestMapping("/api/v1/reservation")
 public class SeatReservationController {
     private final SeatReservationService seatReservationService;
-
-//    @GetMapping(value = {"/getseatreservation","/{bookingId}"})
-//    public List<SeatReservation> getSeatReservation(@PathVariable(required = false)Long bookingId){
-//        return seatReservationService.getSeatReservation(bookingId);
-//    }
-
     @GetMapping("/getshow/{showId}")
     public List<Long> getByShowId(@PathVariable Long showId){
         return seatReservationService.getByShowId(showId);
     }
-
     @GetMapping("/getseat/{bookingId}")
     public List<Long> getByBookingId(@PathVariable Long bookingId){
         return seatReservationService.getByBookingId(bookingId);
     }
-
-
     @GetMapping("/seatIds/{showId}")
     public List<Long> getSeatIdsByShowId(@PathVariable Long showId) {
         return seatReservationService.getSeatIdsByShowId(showId);
     }
-
     @GetMapping("/seatIdswithbookingId/{showId}")
     public Map<Long, List<Long>> getSeatIdswithBookingIdsByShowId(@PathVariable Long showId) {
         return seatReservationService.getSeatIdswithBookingIdsByShowId(showId);

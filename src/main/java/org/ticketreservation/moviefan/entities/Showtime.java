@@ -31,11 +31,7 @@ public class Showtime {
     @DateTimeFormat
     private Time endTime;
     private Date showdate;
-    private int availableSeats;
 
     private double price;
 
-//    @OneToMany(mappedBy = "bookedseat")
-//    @JsonIgnore // This prevents infinite recursion
-//    private Set<BookedSeat> bookings;
 }

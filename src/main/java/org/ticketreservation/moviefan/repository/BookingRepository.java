@@ -14,19 +14,6 @@ public interface BookingRepository extends JpaRepository<Booking,Long> {
     int existsBookingForSeatInShow(List<String> seatId,Long showId);
 
     Optional<Booking> findAllByBookingId(long bookingId);
-
-//    List<Booking> findByShowtimeShowtimeId(long showId);
-
-
-
-    @Query("SELECT b.bookingId FROM Booking b WHERE b.showtime.showtimeId = :showId")
+        @Query("SELECT b.bookingId FROM Booking b WHERE b.showtime.showtimeId = :showId")
     List<Long> findBookingIdsByShowtimeId(@Param("showId") Long showId);
-
-//    @Query("SELECT DISTINCT b FROM Booking b " +
-//            "LEFT JOIN FETCH b.seatReservations sr " +
-//            "WHERE b.showtime.showtimeId = :showId")
-//    List<Booking> findByShowtimeShowtimeIdWithSeatReservations(long showId);
-
-
-
 }

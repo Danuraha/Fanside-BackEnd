@@ -1,19 +1,15 @@
-package org.ticketreservation.moviefan.dao.booking;
+package org.ticketreservation.moviefan.dao.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Bookingdto {
+public class SignInRequest {
     private String email;
-    private List<String> seatId;
-    private Long showId;
-    private Long totalAmount;
+    private String password;
 }

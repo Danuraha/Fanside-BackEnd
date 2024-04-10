@@ -14,22 +14,17 @@ import java.util.*;
 @RequestMapping("/api/v1/showtime")
 @RequiredArgsConstructor
 public class ShowtimeController {
-
-
     private  final ShowtimeService showtimeService;
-
     @PostMapping("/save")
     public ResponseEntity<Showtime> saveShowtime(@RequestBody Showtime showtime) {
         Showtime savedShowtime = showtimeService.saveShowtime(showtime);
         return ResponseEntity.ok(savedShowtime);
     }
-
     @DeleteMapping("/{showtimeId}")
     public ResponseEntity<Showtime> deleteShowtime(@PathVariable Long showtimeId) {
         showtimeService.deleteShowtime(showtimeId);
         return ResponseEntity.noContent().build();
     }
-
     @GetMapping("/{showtimeId}")
     public ResponseEntity<Optional<Showtime>> getShowtimeById(@PathVariable Long showtimeId) {
         Optional<Showtime> showtime = showtimeService.getShowtimeById(showtimeId);
@@ -39,7 +34,6 @@ public class ShowtimeController {
             return ResponseEntity.notFound().build();
         }
     }
-
     @GetMapping("/getbymovieId/{movieId}")
     public Optional<List<Showtime>> getByMovieId(@PathVariable Long movieId) {
         return showtimeService.getByMovie(movieId);
@@ -48,7 +42,5 @@ public class ShowtimeController {
     public Optional<List<Showtime>> getByCinemaId(@PathVariable Long cinemaId){
         return showtimeService.getByCinema(cinemaId);
     }
-
-
 }
 

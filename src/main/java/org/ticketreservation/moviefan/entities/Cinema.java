@@ -16,11 +16,10 @@ public class Cinema {
 
     private String name;
     private String location;
-    private int numSeats;
     private String description;
-
+    private String descriptiveDescription;
     @OneToMany(mappedBy = "cinema")
-    @JsonIgnore // This prevents infinite recursion
+    @JsonIgnore
     private Set<Showtime> showtimes;
 
 }

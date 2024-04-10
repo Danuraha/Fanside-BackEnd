@@ -15,9 +15,7 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingId;
-//    private List<String> seatId;
-//@ElementCollection
-//private List<String> seatId;
+
     @ManyToOne
     @JoinColumn(name = "showtime_id")
     private Showtime showtime;
@@ -25,8 +23,6 @@ public class Booking {
     @JsonIgnore
     @OneToMany(mappedBy = "booking",cascade = CascadeType.ALL)
     private List<SeatReservation> seatReservations;
-
-
 
     @ManyToOne
     @JoinColumn(name = "user_userid")

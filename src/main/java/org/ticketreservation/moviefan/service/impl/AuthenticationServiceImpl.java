@@ -6,13 +6,13 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.ticketreservation.moviefan.dao.request.SignInRequest;
 import org.ticketreservation.moviefan.service.JwtService;
 import org.ticketreservation.moviefan.entities.Role;
 import org.ticketreservation.moviefan.entities.User;
 import org.ticketreservation.moviefan.repository.UserRepository;
 import org.ticketreservation.moviefan.dao.response.JwtAuthenticationResponse;
 import org.ticketreservation.moviefan.dao.request.SignUpRequest;
-import org.ticketreservation.moviefan.dao.request.SigninRequest;
 import org.ticketreservation.moviefan.service.AuthenticationService;
 
 @Service
@@ -27,6 +27,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         var user = User.builder().firstName(request.getFirstName()).lastName(request.getLastName())
                 .email(request.getEmail()).password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
+//                .role(request.getRole())
                 .build();
         userRepository.save(user);
         var jwt = jwtService.generateToken(user);
@@ -34,7 +35,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public JwtAuthenticationResponse signin(SigninRequest request) {
+    public JwtAuthenticationResponse signin(SignInRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
         var user = userRepository.findByEmail(request.getEmail())

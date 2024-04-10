@@ -23,9 +23,9 @@ public class CinemaController {
     }
 
     @DeleteMapping("delete/{cinemaId}")
-    public ResponseEntity removeCinema(@PathVariable Long cinemaId){
+    public ResponseEntity<Cinema> removeCinema(@PathVariable Long cinemaId){
         cinemaService.deleteCinema(cinemaId);
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 

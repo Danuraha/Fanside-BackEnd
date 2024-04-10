@@ -1,12 +1,8 @@
 package org.ticketreservation.moviefan.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -20,6 +16,6 @@ public class Movie {
     private String title;
     private String description;
     private String genre;
-
+    private String descriptiveDescription;
 
 }
